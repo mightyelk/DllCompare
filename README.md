@@ -9,4 +9,7 @@ Useful if version numbers aren't a reliable way to ensure the right dll is used.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
+<<<<<<< HEAD
+>>>>>>> 474d496f5d3a061c4c5ef121a5c74bd01be2f04a
+=======
 >>>>>>> 474d496f5d3a061c4c5ef121a5c74bd01be2f04a
