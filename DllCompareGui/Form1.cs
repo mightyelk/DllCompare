@@ -19,9 +19,6 @@ namespace DllCompareGui
             button1.Click += Button_Click;
             button2.Click += Button_Click;
 
-
-        
-
         }
 
         private void Button_Click(object sender, EventArgs e)

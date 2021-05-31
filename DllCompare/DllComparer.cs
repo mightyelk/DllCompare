@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
-using MiscExt;
+
 
 namespace DllCompare
 {
     public class DllComparer
     {
-
         string _f1;
         string _f2;
 
@@ -86,25 +85,24 @@ namespace DllCompare
                             bool parameters = CompareParamInfo(pi1, pi2);
                             bool returnType = mi1.ReturnType.Equals(mi2.ReturnType);
 
-
                             if (!access & TestFlag(whichOnes, DifferenceType.DifferentAccessLevel))
-                                ret.AppendLine("{0}: Class '{1}', Method '{2}' attributes/access modifiers do not match --> '{3}' vs '{4}'", a1Name, t1.Name, mi1.ToString(), mi1.Attributes, mi2.Attributes);
+                                ret.AppendFormat("{0}: Class '{1}', Method '{2}' attributes/access modifiers do not match --> '{3}' vs '{4}'", a1Name, t1.Name, mi1.ToString(), mi1.Attributes, mi2.Attributes);
 
                             if (!parameters & TestFlag (whichOnes, DifferenceType.DifferentParameters))
-                                ret.AppendLine("{0}: Class '{1}', Method '{2}' calling parameters do not match.", a1Name, t1.Name, mi1.ToString());
+                                ret.AppendFormat("{0}: Class '{1}', Method '{2}' calling parameters do not match.", a1Name, t1.Name, mi1.ToString());
                             if (!returnType & TestFlag(whichOnes, DifferenceType.DifferentReturnType))
-                                ret.AppendLine("{0}: Class '{1}', Method '{2}' return parameter does not match.", a1Name, t1.Name, mi1.ToString());
+                                ret.AppendFormat("{0}: Class '{1}', Method '{2}' return parameter does not match.", a1Name, t1.Name, mi1.ToString());
                         }
                         else
                             if (TestFlag(whichOnes, DifferenceType.MissingMethods))
-                                ret.AppendLine("{0}: Class '{1}', Method '{2}' does not exist in other DLL.", a1Name, t1.Name, mi1.ToString());
+                                ret.AppendFormat("{0}: Class '{1}', Method '{2}' does not exist in other DLL.", a1Name, t1.Name, mi1.ToString());
                     }
                     
                 }
                 else
                 {
                     if (TestFlag(whichOnes, DifferenceType.MissingTypes))
-                        ret.AppendLine("{0}: Type '{1}' does not exist in other DLL.", a1Name, t1.Name);
+                        ret.AppendFormat("{0}: Type '{1}' does not exist in other DLL.", a1Name, t1.Name);
 
                 }
 
